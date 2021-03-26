@@ -11,20 +11,21 @@ the values of the arguments passed to that function.
 */
 function destroyer(arr){
     let newArr=[];
-    for(let i=1; arguments.length>i;i++){
-        if(arguments.length<=1){
-            newArr=[...arr];
-        }else{
-            newArr=arr.slice()
-            for(let j=0;j<arr.length;j++){
-                if(arr[j]==arguments[i]){
-                    newArr.splice(arr[j],1)
-                }
-            }
-        }
-    }
-   
-    return newArr;
+    if(arguments.length<=1){
+        newArr=[...arr];
+    }else{
+        let copyArr=arr.slice();
+        for(let i=1; arguments.length>i;i++){
+           for(let j=0; copyArr.length>j;j++){
+               if(arr[j]==arguments[i]){
+                   arr.splice(j,1);
+                   j--; //Decrementing the index variable so it does not skip the next item in the array.
+               }
+           }
+         }
+    } 
+
+    return newArr=[...arr];
 }
-let anArr=[1,2,3,1,2,3];
-console.log(destroyer(anArr,2,3));
+let anArr=[3, 5, 1, 2, 2];
+console.log(destroyer(anArr,2,3,5));
