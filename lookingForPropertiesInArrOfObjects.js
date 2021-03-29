@@ -23,7 +23,7 @@ arr.filter(function(x){
         for(const key of Object.keys(x)){
             if(key==getObjKey2ndArg[i]&&GetObjValue2ndArg==x[key]){
                 
-                anArr.push({[key]:x[key]})// using square brackets 
+             anArr.push({[key]:x[key]})// using square brackets for property name I can extract orinal name of an Object's property name.
             }
         }
     }
