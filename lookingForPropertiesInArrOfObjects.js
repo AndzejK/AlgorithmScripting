@@ -18,12 +18,18 @@ for (const key of Object.keys(obj)){
 console.log(`The keys of 2nd object ${getObjKey2ndArg}`)
 console.log(`The values of 2nd object ${GetObjValue2ndArg}`)
 let anArr=[];
+console.log(`-----Debugging-----`)
 arr.filter(function(x){
+    console.log(`applying filter() method on the arr of objects and START my CALLBACK fn`);
     for(let i=0;i<getObjKey2ndArg.length;i++){
+    console.log(`FOR iteration to compare my 2nd argument of main fn to 1st argument my getObjKey2ndArg ${getObjKey2ndArg[i]} and my GetObjValue2ndArg ${GetObjValue2ndArg[i]}`)
         for(const key of Object.keys(x)){
-            if(key==getObjKey2ndArg[i]&&GetObjValue2ndArg==x[key]){
-                
-             anArr.push({[key]:x[key]})// using square brackets for property name I can extract orinal name of an Object's property name.
+    console.log(`FOR...OF iteration the array of obj: ${Object.keys(x)}`)
+            if(key==getObjKey2ndArg[i]&&GetObjValue2ndArg[i]==x[key]){
+    console.log(`when data passess IF statement, key: ${key} == ${getObjKey2ndArg[i]} && ${GetObjValue2ndArg[i]}== ${x[key]}`)
+                //anArr.push({[key]:x[key]})// using square brackets for property name I can extract orinal name of an Object's property name.
+    console.log(`I'm pushing whole obj to new array each time when my IF statement is TRUE ${x}`)
+                anArr.push(x)
             }
         }
     }
@@ -47,5 +53,5 @@ arr.filter(function(x){
 }
 
 let collection=[{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }];
-let source={ "apple": 1 };
+let source={ "apple": 1};
 console.log(whatIsInANname(collection,source));
