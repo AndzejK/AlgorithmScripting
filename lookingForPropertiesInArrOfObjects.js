@@ -18,7 +18,8 @@ for (const key of Object.keys(obj)){
 console.log(`The keys of 2nd object ${getObjKey2ndArg}`)
 console.log(`The values of 2nd object ${GetObjValue2ndArg}`)
 let anArr=[];
-console.log(`-----Debugging-----`)
+console.log(`-----Debugging-----`);
+if(getObjKey2ndArg<=1){
 arr.filter(function(x){
     console.log(`applying filter() method on the arr of objects and START my CALLBACK fn`);
     for(let i=0;i<getObjKey2ndArg.length;i++){
@@ -35,6 +36,23 @@ arr.filter(function(x){
     }
     
 })
+} else{
+   arr.map(function(x){
+    let someArr=[];
+       for(const key of Object.keys(x)){
+          
+           if((getObjKey2ndArg.filter(y=>y==key))){
+               if(GetObjValue2ndArg.filter(function(z){
+                    if(z==x[key]){
+                        console.log(z);
+                    }
+               })
+                  
+            
+                } 
+            }
+        })
+    }
 //FOR loop to iterate through the array
  /*for(let i=0;i<arr.length;i++){
      //the 2nd argument consist of object and that object can have as much as it possible properties and each of them needs to be check too
@@ -52,6 +70,6 @@ arr.filter(function(x){
  return anArr;
 }
 
-let collection=[{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }];
-let source={ "apple": 1};
+let collection=[{"a": 1, "b": 2, "c": 3}];
+let source={ "a": 1, "b": 9999, "c": 3};
 console.log(whatIsInANname(collection,source));
