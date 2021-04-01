@@ -10,16 +10,18 @@ function whatIsInANname(arr,obj){
  1# To iterate through an object I can use "for...in" loop;
 */
 let getObjKey2ndArg=[];
-let GetObjValue2ndArg=[]
+let GetObjValue2ndArg=[];
+let anArr=[];
+if(getObjKey2ndArg>=1){
 for (const key of Object.keys(obj)){
     getObjKey2ndArg.push(key); //property name in an array
     GetObjValue2ndArg.push(obj[key]); //values in an array
 }
 console.log(`The keys of 2nd object ${getObjKey2ndArg}`)
 console.log(`The values of 2nd object ${GetObjValue2ndArg}`)
-let anArr=[];
+
 console.log(`-----Debugging-----`);
-if(getObjKey2ndArg<=1){
+
 arr.filter(function(x){
     console.log(`applying filter() method on the arr of objects and START my CALLBACK fn`);
     for(let i=0;i<getObjKey2ndArg.length;i++){
@@ -36,22 +38,24 @@ arr.filter(function(x){
     }
     
 })
-} else{
+} 
+else{
+    let arrOfKey=[];
+    let arrOfValue=[];
    arr.map(function(x){
-    let someArr=[];
-       for(const key of Object.keys(x)){
-          
-           if((getObjKey2ndArg.filter(y=>y==key))){
-               if(GetObjValue2ndArg.filter(function(z){
-                    if(z==x[key]){
-                        console.log(z);
-                    }
-               })
-                  
-            
-                } 
-            }
-        })
+        for(const key in x){
+           arrOfKey.push(key);
+           arrOfValue.push(x[key]);
+        }
+    })
+    for(const key2ndArg of Object.keys(obj)){
+        getObjKey2ndArg.push(key2ndArg);
+        GetObjValue2ndArg.push(obj[key2ndArg]);
+    }
+    for(let i=0;i<arrOfKey.length;i++){
+        if(arrOfKey[i]==getObjKey2ndArg[i]&&arrOfValue[i]==GetObjValue2ndArg[i]){
+            anArr.push(arrOfKey[i])
+        }
     }
 //FOR loop to iterate through the array
  /*for(let i=0;i<arr.length;i++){
@@ -69,7 +73,7 @@ arr.filter(function(x){
  } */
  return anArr;
 }
-
+}
 let collection=[{"a": 1, "b": 2, "c": 3}];
 let source={ "a": 1, "b": 9999, "c": 3};
 console.log(whatIsInANname(collection,source));
