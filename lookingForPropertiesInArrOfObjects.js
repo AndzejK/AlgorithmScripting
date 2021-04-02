@@ -42,7 +42,8 @@ arr.filter(function(x){
 else{
     let arrOfKey=[];
     let arrOfValue=[];
-   arr.map(function(x){
+    arr.map(function(x){
+         
         for(const key in x){
            arrOfKey.push(key);
            arrOfValue.push(x[key]);
@@ -53,8 +54,18 @@ else{
         GetObjValue2ndArg.push(obj[key2ndArg]);
     }
     for(let i=0;i<arrOfKey.length;i++){
+        //check if the first pair is equal to another object's pair
         if(arrOfKey[i]==getObjKey2ndArg[i]&&arrOfValue[i]==GetObjValue2ndArg[i]){
-            anArr.push(arrOfKey[i])
+            //The first pair matches w\ collection object, however, all given pairs has to match collection's object
+            let givenObjLength=getObjKey2ndArg.length;
+            givenObjLength--;
+            //check how many left pairs in a given object
+            if(arrOfValue.length>=0){
+                
+
+            }else{
+                anArr.push(arrOfKey[i])
+            }
         }
     }
 //FOR loop to iterate through the array
