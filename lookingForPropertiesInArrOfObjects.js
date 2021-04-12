@@ -8,7 +8,7 @@ the returned array.
 function whatIsInANname(arr,obj){
 /*
  1# To iterate through an object I can use "for...in" loop;
-*/
+
 let getObjKey2ndArg=[];
 let GetObjValue2ndArg=[];
 let anArr=[];
@@ -39,52 +39,31 @@ arr.filter(function(x){
     
 })
 } 
-else{
-    let arrOfKey=[];
-    let arrOfValue=[];
-    arr.map(function(x){
-         
-        for(const key in x){
-           arrOfKey.push(key);
-           arrOfValue.push(x[key]);
-        }
+else {
+    arr.filter(function(x){
+        console.log(x.hasOwnProperty(obj.this))
     })
-    for(const key2ndArg of Object.keys(obj)){
-        getObjKey2ndArg.push(key2ndArg);
-        GetObjValue2ndArg.push(obj[key2ndArg]);
-    }
-    for(let i=0;i<arrOfKey.length;i++){
-        //check if the first pair is equal to another object's pair
-        if(arrOfKey[i]==getObjKey2ndArg[i]&&arrOfValue[i]==GetObjValue2ndArg[i]){
-            //The first pair matches w\ collection object, however, all given pairs has to match collection's object
-            let givenObjLength=getObjKey2ndArg.length;
-            givenObjLength--;
-            //check how many left pairs in a given object
-            if(arrOfValue.length>=0){
-                
-
-            }else{
-                anArr.push(arrOfKey[i])
-            }
-        }
-    }
-//FOR loop to iterate through the array
- /*for(let i=0;i<arr.length;i++){
-     //the 2nd argument consist of object and that object can have as much as it possible properties and each of them needs to be check too
-     for (const ArrObjKey in arr[i]) {
-
-         for(const ObjKey in obj){
-             console.log(`ObjKey in obj(2nd arg) ${obj.ObjKey}`)
-            if(arr[i][ArrObjKey]==obj.ObjKey){
-                console.log(`${ArrObjKey}:${arr[i][ArrObjKey]}`)
-                //anArr.push({ first:arr[i].first, last:obj.last})
-            }
-         }
-        }
- } */
- return anArr;
 }
+*/
+// ##### above code was written a week ago and now I came back and saw some solution on freecodecamp.oou
+let sourceKey=Object.keys(obj);
+console.log(sourceKey);
+let newArr=[];
+arr.filter(function(obj){
+    for(let i=0;i<sourceKey.length;i++){
+        //check if Collection object has same VALUE as given obj
+        
+        if(obj[sourceKey]==sourceKey){
+            console.log('I\'m true');
+            newArr.push(obj[sourceKey]);
+        } else{
+            console.log('I\'m false :(');
+        }
+        return newArr;
+    }
+})
+
 }
-let collection=[{"a": 1, "b": 2, "c": 3}];
-let source={ "a": 1, "b": 9999, "c": 3};
+let collection=[{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }];
+let source={ last: "Capulet" };
 console.log(whatIsInANname(collection,source));
